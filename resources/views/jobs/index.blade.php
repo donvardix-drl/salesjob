@@ -70,6 +70,7 @@
         </div>
     </section>
 </section>
+<!-- Modal Apply Single Job -->
 <div class="modal fade" id="modal-apply-single-job" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-apply-single-jobLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -84,6 +85,26 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                 <a id="modal_btn_apply_now_single_job" href="" class="btn btn-dark">Apply Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Apply All Jobs -->
+<div class="modal fade" id="modal-apply-all-jobs" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="modal-apply-all-jobsLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modal-apply-all-jobsLabel">
+                    Confirm Apply All Jobs
+                </h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are You Sure To Apply To The All Jobs?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <a href="#" class="btn btn-dark">Apply To All Jobs</a>
             </div>
         </div>
     </div>
