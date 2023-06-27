@@ -1,0 +1,73 @@
+body{
+    padding: 50px 0px;
+}
+
+section{
+    margin-bottom: 80px;
+}
+
+*>*:last-child{
+    margin-bottom: 0px !important;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.marketing_list_links{
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    vertical-align: center;
+}
+.marketing_list_links>li>a{
+    display: block;
+    font-weight: bold;
+    color: black;
+    padding: 3px 0px;
+}
+.marketing_list_links>li>a:hover{
+    text-decoration: none;
+}
+.marketing_list_links>li{
+    margin-right: 30px;
+}
+
+.job_item{
+    margin-bottom: 80px;
+}
+.job_item_header{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+.job_header_title>h4>small{
+    display: block;
+
+}
+.job_header_buttons>.btn{
+    margin-left: 15px;
+}
+.job_header_buttons{
+    width: 300px;
+    text-align: right;
+    white-space: nowrap;
+}
+.job_heading_button{
+    display: flex;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+.job_heading_button>*{
+}
+.modal-footer .btn{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+.job_item_content {
+    word-break: break-word;
+}

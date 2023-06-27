@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Facade;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Str;
 
 return [
 
@@ -142,6 +143,18 @@ return [
     'maintenance' => [
         'driver' => 'file',
         // 'store'  => 'redis',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Admin Credentials
+    |--------------------------------------------------------------------------
+    */
+
+    'admin' => [
+        'name' => env('ADMIN_NAME'),
+        'email' => env('ADMIN_EMAIL'),
+        'password' => env('ADMIN_PASSWORD'),
     ],
 
     /*
