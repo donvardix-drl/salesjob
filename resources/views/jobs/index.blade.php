@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S2Q534C3C3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-S2Q534C3C3');
+    </script>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="crisp-website-id" content="{{ config('app.crisp_website_id') }}">
 
-    <title>Laravel</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -84,7 +95,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <a id="modal_btn_apply_now_single_job" href="" class="btn btn-dark">Apply Now</a>
+                <button type="button" id="modal_btn_apply_now_single_job" class="btn btn-dark" data-bs-dismiss="modal">Apply Now</button>
             </div>
         </div>
     </div>
@@ -104,7 +115,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <a href="#" class="btn btn-dark">Apply To All Jobs</a>
+                <button type="button" id="modal_btn_apply_now_all_jobs" class="btn btn-dark" data-bs-dismiss="modal">Apply Now</button>
             </div>
         </div>
     </div>

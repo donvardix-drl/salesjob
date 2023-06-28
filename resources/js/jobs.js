@@ -1,4 +1,5 @@
 import Cookies from 'js-cookie';
+import { Crisp } from 'crisp-sdk-web';
 
 function user_list_count() {
     let apply_later = Cookies.get('jobs_apply_later')
@@ -28,6 +29,8 @@ function check_cookies() {
 }
 
 $(document).ready(function(){
+    Crisp.configure($("meta[name='crisp-website-id']").attr("content"))
+
     user_list_count()
     check_cookies()
 
@@ -93,27 +96,38 @@ $(document).ready(function(){
 
     $('.apply_later').each(function(){
         let apply_later = Cookies.get('jobs_apply_later')
-        let id = $(this).closest('.job_item').data('id')
 
-        if (undefined !== apply_later && -1 !== apply_later.indexOf(id)) {
-            $(this).html('Added')
+        if (undefined !== apply_later) {
+            apply_later = JSON.parse(apply_later)
+            let id = $(this).closest('.job_item').data('id')
+
+            if (-1 !== apply_later.indexOf(id)) {
+                $(this).html('Added')
+            }
         }
     });
 
     $('.not_for_me').each(function(){
         let not_for_me = Cookies.get('jobs_not_for_me')
-        let id = $(this).closest('.job_item').data('id')
 
-        if (undefined !== not_for_me && -1 !== not_for_me.indexOf(id)) {
-            $(this).html('Added')
+        if (undefined !== not_for_me) {
+            not_for_me = JSON.parse(not_for_me)
+            let id = $(this).closest('.job_item').data('id')
+
+            if (-1 !== not_for_me.indexOf(id)) {
+                $(this).html('Added')
+            }
         }
     });
 
     $('#jobs_list').on('click', function(e) {
         e.preventDefault()
 
+        let apply_later = Cookies.get('jobs_apply_later')
+        if (undefined !== apply_later && '[]' !== apply_later) {
+            $('.job_heading_button button').addClass('hidden')
+        }
         $('.job_heading_button h2').text('All Jobs')
-        $('.job_heading_button button').addClass('hidden')
 
         $('.job_item').each(function(){
             $(this).show()
@@ -128,10 +142,13 @@ $(document).ready(function(){
         e.preventDefault()
 
         $('.job_heading_button h2').text('Apply Now List')
-        $('.job_heading_button button').removeClass('hidden')
         let apply_later = Cookies.get('jobs_apply_later')
         if (undefined !== apply_later) {
             apply_later = JSON.parse(apply_later)
+
+            if (0 < apply_later.length) {
+                $('.job_heading_button button').removeClass('hidden')
+            }
         }
 
         $('.job_item').each(function(){
@@ -172,5 +189,31 @@ $(document).ready(function(){
         $('.apply_now').removeClass('hidden')
         $('.not_for_me').addClass('hidden')
         $('.apply_later').addClass('hidden')
+    });
+
+    $('.apply_now').on('click', function(){
+        $('#modal_btn_apply_now_single_job').attr('data-id', $(this).closest('.job_item').data('id'))
+    });
+
+    $('#modal_btn_apply_now_single_job').on('click', function() {
+        Crisp.message.sendText('Jobs:\nhttps://' + document.domain + '/job/' + $(this).data('id'));
+        Crisp.chat.open()
+    });
+
+    $('#modal_btn_apply_now_all_jobs').on('click', function() {
+        let apply_later = Cookies.get('jobs_apply_later')
+
+        if (undefined !== apply_later) {
+            apply_later = JSON.parse(apply_later)
+
+            let crispText = 'Jobs:'
+            for (let i = 0; i < apply_later.length; i++) {
+                crispText += '\nhttps://' + document.domain + '/job/' + apply_later[i]
+            }
+
+            Crisp.message.sendText(crispText);
+        }
+
+        Crisp.chat.open()
     });
 });
