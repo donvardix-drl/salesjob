@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/jobs', [JobController::class, 'index'])->name('jobs');
+Route::get('/', [JobController::class, 'index'])->name('jobs');
 Route::get('/job/{job}', [JobController::class, 'view'])->name('job.view');
 
 Route::middleware(['auth', 'verified'])->group(function () {

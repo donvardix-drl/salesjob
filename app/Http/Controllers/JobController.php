@@ -11,9 +11,9 @@ class JobController extends Controller
 {
     public function index(): View
     {
-        $count = Job::count();
-        $jobs = Job::paginate(500);
-        return view('jobs.index', compact('count', 'jobs'));
+        $jobs = Job::get();
+        $pagesize = 50;
+        return view('jobs.index', compact('jobs', 'pagesize'));
     }
 
     public function view(Job $job): View

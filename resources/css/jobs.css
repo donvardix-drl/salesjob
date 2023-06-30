@@ -71,3 +71,9 @@ section{
 .job_item_content {
     word-break: break-word;
 }
+.pagination {
+    justify-content: center;
+}
+.pagination .page-item {
+    cursor: pointer;
+}
