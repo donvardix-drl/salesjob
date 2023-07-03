@@ -25,7 +25,7 @@
     <!-- Scripts -->
     @vite(['resources/css/jobs.css', 'resources/js/app.js', 'resources/js/jobs.js'])
 </head>
-<body class="antialiased">
+<body class="antialiased single-job">
 <section id="section-1" class="section-content">
     <section class="jobs">
         <div class="container">

@@ -16,18 +16,6 @@ function user_list_count() {
     }
 }
 
-function check_cookies() {
-    let check_cookies = Cookies.get('jobs_check_cookies')
-    let jobs_total = $('#count_total').text()
-    if (undefined === check_cookies) {
-        Cookies.set('jobs_check_cookies', jobs_total, { expires: 30 })
-    } else if ( check_cookies !== jobs_total ) {
-        Cookies.set('jobs_check_cookies', jobs_total, { expires: 30 })
-        Cookies.remove('jobs_apply_later')
-        Cookies.remove('jobs_not_for_me')
-    }
-}
-
 function pagination_init(total = false) {
     let pagination = $('.pagination')
     let current = pagination.data('current')
@@ -110,9 +98,10 @@ function jobs_list_init(pag_init = true) {
 $(document).ready(function(){
     Crisp.configure($("meta[name='crisp-website-id']").attr("content"))
 
-    check_cookies()
     user_list_count()
-    jobs_list_init()
+    if (!$('body').hasClass('single-job')) {
+        jobs_list_init()
+    }
 
     $('.apply_later').on('click', function(){
         let apply_later = Cookies.get('jobs_apply_later')
@@ -124,12 +113,12 @@ $(document).ready(function(){
         job_item.hide()
 
         if (undefined === apply_later) {
-            Cookies.set('jobs_apply_later', JSON.stringify([id]), { expires: 7 })
+            Cookies.set('jobs_apply_later', JSON.stringify([id]), { expires: 30 })
         } else {
             apply_later = JSON.parse(apply_later)
             if (-1 === apply_later.indexOf(id)) {
                 apply_later.push(id)
-                Cookies.set('jobs_apply_later', JSON.stringify(apply_later), { expires: 7 })
+                Cookies.set('jobs_apply_later', JSON.stringify(apply_later), { expires: 30 })
             }
         }
 
@@ -139,7 +128,7 @@ $(document).ready(function(){
                 let index = not_for_me.indexOf(id)
                 not_for_me.splice(index, 1)
 
-                Cookies.set('jobs_not_for_me', JSON.stringify(not_for_me), { expires: 7 })
+                Cookies.set('jobs_not_for_me', JSON.stringify(not_for_me), { expires: 30 })
                 $(this).siblings('.not_for_me').text('Not for me')
             }
         }
@@ -157,12 +146,12 @@ $(document).ready(function(){
         job_item.hide()
 
         if (undefined === not_for_me) {
-            Cookies.set('jobs_not_for_me', JSON.stringify([id]), { expires: 7 })
+            Cookies.set('jobs_not_for_me', JSON.stringify([id]), { expires: 30 })
         } else {
             not_for_me = JSON.parse(not_for_me)
             if (-1 === not_for_me.indexOf(id)) {
                 not_for_me.push(id)
-                Cookies.set('jobs_not_for_me', JSON.stringify(not_for_me), { expires: 7 })
+                Cookies.set('jobs_not_for_me', JSON.stringify(not_for_me), { expires: 30 })
             }
         }
 
@@ -172,7 +161,7 @@ $(document).ready(function(){
                 let index = apply_later.indexOf(id)
                 apply_later.splice(index, 1)
 
-                Cookies.set('jobs_apply_later', JSON.stringify(apply_later), { expires: 7 })
+                Cookies.set('jobs_apply_later', JSON.stringify(apply_later), { expires: 30 })
                 $(this).siblings('.apply_later').text('Apply Later')
             }
         }

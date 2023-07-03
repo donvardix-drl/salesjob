@@ -59,7 +59,7 @@
                     </div>
                     <div class="jobs_list">
                         @foreach($jobs as $job)
-                            <div class="job_item" data-id="{{ $job->id }}">
+                            <div class="job_item" data-id="{{ $job->jobid }}">
                                 <div class="job_item_header">
                                     <div class="job_header_title">
                                         <h4>{{ $job->title }}<small class="mt-3">{{ $job->company }}</small></h4>

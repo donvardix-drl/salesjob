@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
+use App\Models\Option;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Throwable;
 
 class JobController extends Controller
 {
@@ -16,39 +18,80 @@ class JobController extends Controller
         return view('jobs.index', compact('jobs', 'pagesize'));
     }
 
-    public function view(Job $job): View
+    public function view($jobid): View
     {
+        $job = Job::where('jobid', $jobid)->firstOrFail();
+
         return view('jobs.view', compact('job'));
     }
 
     public function import(): View
     {
-        return view('jobs.import');
+        $options = Option::get(['name', 'value'])->keyBy('name')->toArray();
+
+        return view('jobs.import', compact('options'));
     }
 
-    public function store(Request $request)
+    public function storeImport(Request $request)
     {
         $request->validate([
             'jobs' => 'required|file|mimes:xml'
         ]);
 
-        Job::truncate();
-
         $jobsXml = $request->file('jobs');
         $jobsXmlString = file_get_contents($jobsXml->getRealPath());
-        $jobs = new \SimpleXMLElement($jobsXmlString);
 
-        $data = [];
-        foreach ($jobs as $job) {
-            $data[] = [
-                'title' => $job->job_title,
-                'company' => $job->job_company,
-                'short' => $job->job_short,
-                'description' => $job->job_description,
-            ];
-        }
-        Job::insert($data);
+        $this->store($jobsXmlString);
 
         return Redirect::route('jobs.import')->with('status', 'jobs-imported');
+    }
+
+    public function cron(): void
+    {
+        $xmlLink = Option::where('name', 'xml_link')->first()->value;
+
+        if (empty($xmlLink)) {
+            return;
+        }
+
+        $jobsXmlString = file_get_contents($xmlLink);
+        $this->store($jobsXmlString);
+    }
+
+    public function store($jobsXmlString): void
+    {
+        try {
+            $jobs = new \SimpleXMLElement($jobsXmlString);
+        } catch (Throwable $e) {
+            return;
+        }
+
+        Job::truncate();
+
+        foreach ($jobs as $job) {
+            if (empty($job->ourjobid)) continue;
+
+            Job::create([
+                'jobid' => $job->ourjobid,
+                'title' => $job->jobtitle ?? null,
+                'company' => $job->job_company ?? null,
+                'short' => $job->job_short ?? null,
+                'description' => $job->description ?? null,
+            ]);
+        }
+    }
+
+    public function storeOptions(Request $request)
+    {
+        Option::upsert(
+            [
+                'name' => 'xml_link',
+                'value' => $request->xml_link
+            ],
+            ['name'],
+            ['value']
+        );
+
+        return Redirect::route('jobs.import')->with('status', 'options-saved');
     }
 }
