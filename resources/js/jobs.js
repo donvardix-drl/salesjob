@@ -241,7 +241,7 @@ $(document).ready(function(){
         $('.pagination ').addClass('hidden')
     });
 
-    $('#apply_now_single_job').on('click', function() {
+    $('.apply_now').on('click', function() {
         Crisp.message.sendText('Jobs:\n' + document.location.href + 'job/' + $(this).closest('.job_item').data('id'));
         Crisp.chat.open()
     });

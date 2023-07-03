@@ -67,7 +67,7 @@
                                     <div class="job_header_buttons">
                                         <button class="btn btn-outline-dark apply_later">Apply Later</button>
                                         <button class="btn btn-outline-dark not_for_me">Not for me</button>
-                                        <button id="apply_now_single_job" class="btn btn-outline-dark apply_now hidden">Apply Now</button>
+                                        <button class="btn btn-outline-dark apply_now hidden">Apply Now</button>
                                     </div>
                                 </div>
                                 <div class="job_item_content">

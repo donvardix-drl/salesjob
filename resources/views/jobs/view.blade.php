@@ -38,7 +38,7 @@
                                     <h4>{{ $job->title }}<small class="mt-3">{{ $job->company }}</small></h4>
                                 </div>
                                 <div class="job_header_buttons">
-                                    <button id="apply_now_single_job" class="btn btn-outline-dark apply_now">Apply Now</button>
+                                    <button class="btn btn-outline-dark apply_now">Apply Now</button>
                                 </div>
                             </div>
                             <div class="job_item_content">
