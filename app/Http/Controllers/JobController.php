@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Job;
 use App\Models\Option;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use Throwable;
@@ -62,6 +63,7 @@ class JobController extends Controller
 
     public function cron(): void
     {
+        Log::debug('Cron started');
         $xmlLink = Option::where('name', 'xml_link')->first()->value;
 
         if (empty($xmlLink)) {
