@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [JobController::class, 'index'])->name('jobs');
 Route::get('/job/{job}', [JobController::class, 'view'])->name('job.view');
+Route::get('/cron', [JobController::class, 'cron']);
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [ProfileController::class, 'dashboard'])->name('dashboard');
@@ -28,8 +29,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/jobs-import', [JobController::class, 'import'])->name('jobs.import');
     Route::post('/jobs-import', [JobController::class, 'storeImport'])->name('jobs.storeImport');
     Route::post('/jobs-options', [JobController::class, 'storeOptions'])->name('jobs.storeOptions');
-
-    Route::get('/cron', [JobController::class, 'cron']);
 });
 
 require __DIR__.'/auth.php';

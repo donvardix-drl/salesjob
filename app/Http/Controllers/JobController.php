@@ -46,6 +46,20 @@ class JobController extends Controller
         return Redirect::route('jobs.import')->with('status', 'jobs-imported');
     }
 
+    public function storeOptions(Request $request)
+    {
+        Option::upsert(
+            [
+                'name' => 'xml_link',
+                'value' => $request->xml_link
+            ],
+            ['name'],
+            ['value']
+        );
+
+        return Redirect::route('jobs.import')->with('status', 'options-saved');
+    }
+
     public function cron(): void
     {
         $xmlLink = Option::where('name', 'xml_link')->first()->value;
@@ -58,7 +72,7 @@ class JobController extends Controller
         $this->store($jobsXmlString);
     }
 
-    public function store($jobsXmlString): void
+    private function store($jobsXmlString): void
     {
         try {
             $jobs = new \SimpleXMLElement($jobsXmlString);
@@ -79,19 +93,5 @@ class JobController extends Controller
                 'description' => $job->description ?? null,
             ]);
         }
-    }
-
-    public function storeOptions(Request $request)
-    {
-        Option::upsert(
-            [
-                'name' => 'xml_link',
-                'value' => $request->xml_link
-            ],
-            ['name'],
-            ['value']
-        );
-
-        return Redirect::route('jobs.import')->with('status', 'options-saved');
     }
 }
