@@ -215,6 +215,7 @@ $(document).ready(function(){
         $('.not_for_me').addClass('hidden')
         $('.apply_later').addClass('hidden')
         $('.pagination ').addClass('hidden')
+        $('.job_item_content ').addClass('hidden')
     });
 
     $('#not_for_me_list').on('click', function(e) {
