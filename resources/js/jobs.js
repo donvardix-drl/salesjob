@@ -133,7 +133,9 @@ $(document).ready(function(){
             }
         }
         user_list_count()
-        jobs_list_init(false)
+        if (!$('body').hasClass('single-job')) {
+            jobs_list_init(false)
+        }
     });
 
     $('.not_for_me').on('click', function(){

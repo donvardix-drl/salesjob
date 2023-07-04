@@ -22,8 +22,9 @@ class JobController extends Controller
     public function view($jobid): View
     {
         $job = Job::where('jobid', $jobid)->firstOrFail();
+        $jobs = Job::get();
 
-        return view('jobs.view', compact('job'));
+        return view('jobs.view', compact('job', 'jobs'));
     }
 
     public function import(): View

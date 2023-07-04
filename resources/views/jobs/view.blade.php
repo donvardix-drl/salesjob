@@ -26,6 +26,21 @@
     @vite(['resources/css/jobs.css', 'resources/js/app.js', 'resources/js/jobs.js'])
 </head>
 <body class="antialiased single-job">
+<section id="section-0" class="section-content">
+    <section class="marketing_list_intro">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>{{ config('app.name', 'Sales Jobs Berlin.com') }}</h1>
+                    <p>
+                        You have <strong><span id="count_total">{{ count($jobs) }}</span> Jobs</strong> in your "Apply Later List"<br />
+                        Just press the 'Apply Now' Button
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
 <section id="section-1" class="section-content">
     <section class="jobs">
         <div class="container">
@@ -45,6 +60,40 @@
                                 <p>{!! $job->description !!}</p>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+<section id="section-2" class="section-content">
+    <section class="jobs">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="job_heading_button">
+                        <h2>All Jobs</h2>
+                        <button type="button" id="apply_now_all_jobs" class="btn btn-outline-dark btn-lg hidden">
+                            Apply Now
+                        </button>
+                    </div>
+                    <div class="jobs_list">
+                        @foreach($jobs as $job)
+                            <div class="job_item" data-id="{{ $job->jobid }}">
+                                <div class="job_item_header">
+                                    <div class="job_header_title">
+                                        <h4>{{ $job->title }}<small class="mt-3">{{ $job->company }}</small></h4>
+                                    </div>
+                                    <div class="job_header_buttons">
+                                        <button class="btn btn-outline-dark apply_later">Apply Later</button>
+                                        <button class="btn btn-outline-dark not_for_me">Not for me</button>
+                                    </div>
+                                </div>
+                                <div class="job_item_content">
+                                    <p>{!! $job->description !!}</p>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

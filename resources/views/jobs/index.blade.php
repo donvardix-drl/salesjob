@@ -33,8 +33,8 @@
                 <div class="col-lg-12">
                     <h1>{{ config('app.name', 'Sales Jobs Berlin.com') }}</h1>
                     <p>
-                        We have <strong><span id="count_total">{{ count($jobs) }}</span> Jobs</strong> for marketing in Munich<br>
-                        Just press <strong>'Apply Now'</strong> or <strong>'Not for me'</strong>
+                        You have <strong><span id="count_total">{{ count($jobs) }}</span> Jobs</strong> in your "Apply Later List"<br />
+                        Just press the 'Apply Now' Button
                     </p>
                     <ul class="marketing_list_links">
                         <li><a id="jobs_list" href="">All Jobs</a></li>
@@ -53,8 +53,8 @@
                 <div class="col-lg-12">
                     <div class="job_heading_button">
                         <h2>All Jobs</h2>
-                        <button type="button" id="apply_now_all_jobs" class="btn btn-dark btn-lg hidden">
-                            Apply to all Jobs at once
+                        <button type="button" id="apply_now_all_jobs" class="btn btn-outline-dark btn-lg hidden">
+                            Apply Now
                         </button>
                     </div>
                     <div class="jobs_list">
@@ -67,7 +67,7 @@
                                     <div class="job_header_buttons">
                                         <button class="btn btn-outline-dark apply_later">Apply Later</button>
                                         <button class="btn btn-outline-dark not_for_me">Not for me</button>
-                                        <button class="btn btn-outline-dark apply_now hidden">Apply Now</button>
+{{--                                        <button class="btn btn-outline-dark apply_now hidden">Apply Now</button>--}}
                                     </div>
                                 </div>
                                 <div class="job_item_content">
