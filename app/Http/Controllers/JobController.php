@@ -15,7 +15,7 @@ class JobController extends Controller
     public function index(): View
     {
         $jobs = Job::get();
-        $pagesize = env('JOBS_PER_PAGE', 10);
+        $pagesize = env('JOBS_PER_PAGE', 500);
         return view('jobs.index', compact('jobs', 'pagesize'));
     }
 

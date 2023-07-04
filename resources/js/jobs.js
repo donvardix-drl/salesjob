@@ -186,6 +186,7 @@ $(document).ready(function(){
         $('.not_for_me').removeClass('hidden')
         $('.apply_later').removeClass('hidden')
         $('.pagination ').removeClass('hidden')
+        $('.job_item_content ').removeClass('hidden')
     });
 
     $('#apply_later_list').on('click', function(e) {
@@ -242,6 +243,7 @@ $(document).ready(function(){
         $('.not_for_me').addClass('hidden')
         $('.apply_later').addClass('hidden')
         $('.pagination ').addClass('hidden')
+        $('.job_item_content ').removeClass('hidden')
     });
 
     $('.apply_now').on('click', function() {
