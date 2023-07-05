@@ -38,7 +38,7 @@
                     </p>
                     <ul class="marketing_list_links">
                         <li><a id="jobs_list" href="">All Jobs</a></li>
-{{--                        <li><a id="apply_later_list" href=""><span id="count_apply_later">0</span> Jobs in Apply Later List</a></li>--}}
+                        <li><a id="apply_later_list" href=""><span id="count_apply_later">0</span> Jobs in Apply Later List</a></li>
                         <li><a id="not_for_me_list" href=""><span id="count_not_for_me">0</span> Not for me list</a></li>
                     </ul>
                 </div>

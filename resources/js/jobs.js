@@ -177,6 +177,8 @@ $(document).ready(function(){
         $('.apply_later').removeClass('hidden')
         $('.pagination ').removeClass('hidden')
         $('.job_item_content ').removeClass('hidden')
+
+        $('.marketing_list_links li').removeClass('hidden')
     });
 
     $('#apply_later_list').on('click', function(e) {
@@ -207,6 +209,9 @@ $(document).ready(function(){
         $('.apply_later').addClass('hidden')
         $('.pagination ').addClass('hidden')
         $('.job_item_content ').addClass('hidden')
+
+        $('.marketing_list_links li').removeClass('hidden')
+        $(this).closest('li').addClass('hidden')
     });
 
     $('#not_for_me_list').on('click', function(e) {
@@ -234,6 +239,9 @@ $(document).ready(function(){
         $('.apply_later').addClass('hidden')
         $('.pagination ').addClass('hidden')
         $('.job_item_content ').removeClass('hidden')
+
+        $('.marketing_list_links li').removeClass('hidden')
+        $(this).closest('li').addClass('hidden')
     });
 
     $('.apply_now').on('click', function() {
