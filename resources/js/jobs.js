@@ -99,9 +99,7 @@ $(document).ready(function(){
     Crisp.configure($("meta[name='crisp-website-id']").attr("content"))
 
     user_list_count()
-    if (!$('body').hasClass('single-job')) {
-        jobs_list_init()
-    }
+    jobs_list_init()
 
     $('.apply_later').on('click', function(){
         let apply_later = Cookies.get('jobs_apply_later')
@@ -109,7 +107,6 @@ $(document).ready(function(){
         let job_item = $(this).closest('.job_item')
         let id = job_item.data('id')
 
-        $(this).text('Added')
         job_item.hide()
 
         if (undefined === apply_later) {
@@ -127,15 +124,11 @@ $(document).ready(function(){
             if (-1 !== not_for_me.indexOf(id)) {
                 let index = not_for_me.indexOf(id)
                 not_for_me.splice(index, 1)
-
                 Cookies.set('jobs_not_for_me', JSON.stringify(not_for_me), { expires: 30 })
-                $(this).siblings('.not_for_me').text('Not for me')
             }
         }
         user_list_count()
-        if (!$('body').hasClass('single-job')) {
-            jobs_list_init(false)
-        }
+        jobs_list_init(false)
     });
 
     $('.not_for_me').on('click', function(){
@@ -144,7 +137,6 @@ $(document).ready(function(){
         let job_item = $(this).closest('.job_item')
         let id = job_item.data('id')
 
-        $(this).text('Added')
         job_item.hide()
 
         if (undefined === not_for_me) {
@@ -162,9 +154,7 @@ $(document).ready(function(){
             if (-1 !== apply_later.indexOf(id)) {
                 let index = apply_later.indexOf(id)
                 apply_later.splice(index, 1)
-
                 Cookies.set('jobs_apply_later', JSON.stringify(apply_later), { expires: 30 })
-                $(this).siblings('.apply_later').text('Apply Later')
             }
         }
         user_list_count()

@@ -9,6 +9,7 @@ export default defineConfig({
                 'resources/css/jobs.css',
                 'resources/js/app.js',
                 'resources/js/jobs.js',
+                'resources/js/single-job.js',
             ],
             refresh: true,
         }),
