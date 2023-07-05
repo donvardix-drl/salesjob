@@ -168,7 +168,7 @@ $(document).ready(function(){
         if (undefined !== apply_later && '[]' !== apply_later) {
             $('.job_heading_button button').addClass('hidden')
         }
-        $('.job_heading_button h2').text('All Jobs')
+        $('.job_heading_button h2').text('')
 
         jobs_list_init(false)
 
@@ -177,8 +177,7 @@ $(document).ready(function(){
         $('.apply_later').removeClass('hidden')
         $('.pagination ').removeClass('hidden')
         $('.job_item_content ').removeClass('hidden')
-
-        $('.marketing_list_links li').removeClass('hidden')
+        $('.marketing_list_links').removeClass('hidden')
     });
 
     $('#apply_later_list').on('click', function(e) {
@@ -209,9 +208,8 @@ $(document).ready(function(){
         $('.apply_later').addClass('hidden')
         $('.pagination ').addClass('hidden')
         $('.job_item_content ').addClass('hidden')
-
-        $('.marketing_list_links li').removeClass('hidden')
-        $(this).closest('li').addClass('hidden')
+        $('.marketing_list_links').addClass('hidden')
+        $('body').addClass('apply_later_list')
     });
 
     $('#not_for_me_list').on('click', function(e) {
@@ -239,9 +237,7 @@ $(document).ready(function(){
         $('.apply_later').addClass('hidden')
         $('.pagination ').addClass('hidden')
         $('.job_item_content ').removeClass('hidden')
-
-        $('.marketing_list_links li').removeClass('hidden')
-        $(this).closest('li').addClass('hidden')
+        $('.marketing_list_links').removeClass('hidden')
     });
 
     $('.apply_now').on('click', function() {

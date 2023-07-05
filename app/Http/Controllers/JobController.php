@@ -97,4 +97,17 @@ class JobController extends Controller
             ]);
         }
     }
+
+    public function page(): View
+    {
+        return view('pages.empty');
+    }
+
+    public function sitemap()
+    {
+        $jobs = Job::get();
+        return response()->view('sitemap', [
+            'jobs' => $jobs
+        ])->header('Content-Type', 'text/xml');
+    }
 }

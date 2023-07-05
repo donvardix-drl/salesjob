@@ -52,7 +52,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="job_heading_button">
-                        <h2>All Jobs</h2>
+                        <h2></h2>
                         <button type="button" id="apply_now_all_jobs" class="btn btn-outline-dark btn-lg hidden">
                             Apply Now
                         </button>
@@ -85,14 +85,12 @@
     </section>
 </section>
 <div class="container">
-    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-        <p class="col-md-4 mb-0 text-body-secondary">© 2023 Company</p>
-
+    <footer class="d-flex flex-wrap justify-content-end align-items-center py-3 my-4 border-top">
         <ul class="nav col-md-4 justify-content-end">
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About us</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Contact Us</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Sitemap</a></li>
-            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Terms & Conditions</a></li>
+            <li class="nav-item"><a href="{{ route('about') }}" class="nav-link px-2 text-body-secondary">About us</a></li>
+            <li class="nav-item"><a href="{{ route('contact') }}" class="nav-link px-2 text-body-secondary">Contact Us</a></li>
+            <li class="nav-item"><a href="{{ route('sitemap') }}" class="nav-link px-2 text-body-secondary">Sitemap</a></li>
+            <li class="nav-item"><a href="{{ route('terms') }}" class="nav-link px-2 text-body-secondary">Terms & Conditions</a></li>
         </ul>
     </footer>
 </div>
