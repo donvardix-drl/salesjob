@@ -31,7 +31,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>{{ config('app.name', 'Sales Jobs Berlin.com') }}</h1>
+                    <h1><a class="no-link" href="{{ route('jobs') }}">{{ config('app.name', 'Sales Jobs Berlin.com') }}</a></h1>
                     <p>
                         You have <strong><span id="count_total">{{ count($jobs) }}</span> Jobs</strong> in your "Apply Later List"<br />
                         Just press the 'Apply Now' Button
@@ -62,7 +62,7 @@
                             <div class="job_item" data-id="{{ $job->jobid }}">
                                 <div class="job_item_header">
                                     <div class="job_header_title">
-                                        <h4>{{ $job->title }}<small class="mt-3">{{ $job->company }}</small></h4>
+                                        <h4><a class="no-link" href="{{ route('job.view', $job->jobid) }}">{{ $job->title }}</a><small class="mt-3">{{ $job->company }}</small></h4>
                                     </div>
                                     <div class="job_header_buttons">
                                         <button class="btn btn-outline-dark apply_later">Apply Later</button>

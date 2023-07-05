@@ -77,3 +77,7 @@ section{
 .pagination .page-item {
     cursor: pointer;
 }
+a.no-link {
+    color: black;
+    text-decoration: none;
+}

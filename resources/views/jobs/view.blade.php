@@ -31,7 +31,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1>{{ config('app.name', 'Sales Jobs Berlin.com') }}</h1>
+                    <h1><a class="no-link" href="{{ route('jobs') }}">{{ config('app.name', 'Sales Jobs Berlin.com') }}</a></h1>
                     <p>
                         You have <strong><span id="count_total">{{ count($jobs) }}</span> Jobs</strong> in your "Apply Later List"<br />
                     </p>
