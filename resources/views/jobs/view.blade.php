@@ -46,7 +46,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="jobs_list">
-                        <div class="job_item single-job" data-id="{{ $job->id }}">
+                        <div class="job_item single-job" data-id="{{ $job->jobid }}">
                             <div class="job_item_header">
                                 <div class="job_header_title">
                                     <h4>{{ $job->title }}<small class="mt-3">{{ $job->company }}</small></h4>
