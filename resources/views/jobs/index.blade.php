@@ -32,7 +32,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1><a class="no-link" href="{{ route('jobs') }}">
-                            <img src="{{ Vite::asset('resources/images/logo.jpg') }}" alt="{{ config('app.name', 'Sales Jobs Berlin.com') }}">
+                            <img src="{{ asset('images/logo.jpg') }}" alt="{{ config('app.name', 'Sales Jobs Berlin.com') }}">
                         </a></h1>
                     <p>
                         You have <strong><span id="count_total">{{ count($jobs) }}</span> Jobs</strong> in your "Apply Later List"<br />
