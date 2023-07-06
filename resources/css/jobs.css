@@ -47,18 +47,15 @@ section{
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 .job_header_title>h4>small{
     display: block;
 
 }
-.job_header_buttons>.btn{
-    margin-left: 15px;
-}
 .job_header_buttons{
-    width: 300px;
-    text-align: right;
-    white-space: nowrap;
+    display: flex;
+    grid-gap: 20px;
 }
 .job_heading_button{
     display: flex;
